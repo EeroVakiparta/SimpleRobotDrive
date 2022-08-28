@@ -86,3 +86,39 @@ Joystic working.
 12:36:53.572 -> X: 17
 12:36:53.572 -> Y: 149
 ```
+## 3 Step
+
+Motor driver working.
+Drives well.
+Next step should be upgrading to more simple driver.
+There is 2 options: 
+
+| Part      | Cost      | weight        | size    | A/channel   |A/peak   | supply Voltage   |  
+| :---:     | :---:     | :---:         | :---:     |:---:      |:---:    |:---: |
+| Dual Way Bidirectional Brushed Esc    | 5.0€      | ~11g   |43 * 25 * 8mm     |?      |5A     |6-19V   |
+| Dual Channel MINI-L298N DC Motor Driver | 0,26€   | 2.6g   |24.7 * 21 * 5mm   |1.5A   |2.5A   |2V-10V   |
+
+Both reduce complexity. Bruched esc could power the ESP32 the same way as big L982N driver.
+Conclusion: I will try to use the MINI-L298N driver first.
+
+## 4 Fit everything in a box and budget
+
+| Part      | Cost      | 
+| :---:     | :---:     | 
+| ESP32 x 2  | 5.6- 9.4€      | 
+| Dual Channel MINI-L298N DC Motor Driver | 0,26€   | 
+| Lipo | 5€   | 
+| 7.4V 800mA*2 XH-3P BMS 2S USB Charger | 1.22€   | 
+| Dual Channel MINI-L298N DC Motor Driver | 0,26€   | 
+| Joystic Dual axis | 0,65€   | 
+| N20 Motors x 2 | 7€ | 
+| TOTAL FOR NOW: | 24€ | 
+
+Postages are not included. 
+
+## ecountered problems
+
+```
+E (44798) gpio: gpio_set_level(226): GPIO output gpio_num error
+solution: I tried to use input only pins as output pins.
+```
