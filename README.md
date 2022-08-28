@@ -1,7 +1,18 @@
 # SimpleRobotDrive
 
+- [x] Connection working
+- [x] Joystic working 
+- [x] Motors spinning
+- [x] MVP
+- [x] Fit control & motors in a box and budget
+- [ ] Field test driving
+- [ ] Weapon control working
+- [ ] Weapong spinning
+- [ ] Assemble whole robot
+- [ ] Improve driving code
 
-## 1 Step
+
+## 1 Connection working
 After first test it seems there is a change that communication is fast enough to try the streeing.
 ```
 11:39:09.416 -> Y: 7
@@ -40,9 +51,8 @@ After first test it seems there is a change that communication is fast enough to
 11:39:09.463 -> 
 11:39:09.463 -> Bytes received: 2
 ```
-## 2 Step
+## 2 Joystic working 
 
-Joystic working.
 ```
 12:36:53.478 -> Y: 150
 12:36:53.478 -> 
@@ -86,7 +96,7 @@ Joystic working.
 12:36:53.572 -> X: 17
 12:36:53.572 -> Y: 149
 ```
-## 3 Step
+## 3 Motors spinning
 
 Motor driver working.
 Drives well.
@@ -115,6 +125,12 @@ Conclusion: I will try to use the MINI-L298N driver first.
 | TOTAL FOR NOW: | 24€ | 
 
 Postages are not included. 
+
+## 5 Field test
+## 6 Weapon control working
+## 7 Weapong spinning
+## 8 Assemble whole robot
+## 9 Improve driving code
 
 ## ecountered problems
 
