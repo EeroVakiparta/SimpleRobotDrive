@@ -6,19 +6,19 @@
 unsigned long lastRecvTime = 0;
 
 // Motor R
-int motorR_Pin1 = 16; 
-int motorR_Pin2 = 17; 
-int enableR_Pin = 22; 
+int RIN1 = 16; 
+int RIN2 = 17; 
 
 // Motor L
-int motorL_Pin1 = 18; 
-int motorL_Pin2 = 19; 
-int enableL_Pin = 23; 
+int LIN3 = 18;
+int LIN4 = 19;
 
 // Setting PWM properties
 const int freq = 1000;
-const int rightMotorPWMSpeedChannel = 4;
-const int leftMotorPWMSpeedChannel = 5;
+const int right1MotorPWMSpeedChannel = 1;
+const int right2MotorPWMSpeedChannel = 2;
+const int left3MotorPWMSpeedChannel = 3;
+const int left4MotorPWMSpeedChannel = 4;
 const int resolution = 8;
 
 typedef struct data_packet {
@@ -70,59 +70,44 @@ void rotateMotor(int rightMotorSpeed, int leftMotorSpeed){
   Serial.println(rightMotorSpeed);
   Serial.println("leftMotorSpeed ");
   Serial.println(leftMotorSpeed);
-  if (rightMotorSpeed < 0)
-  {
-    digitalWrite(motorR_Pin1,LOW);
-    digitalWrite(motorR_Pin2,HIGH);    
+  if (rightMotorSpeed < 0){
+    ledcWrite(right2MotorPWMSpeedChannel, abs(rightMotorSpeed));   
   }
-  else if (rightMotorSpeed > 0)
-  {
-    digitalWrite(motorR_Pin1,HIGH);
-    digitalWrite(motorR_Pin2,LOW);      
+  else if (rightMotorSpeed > 0){
+    ledcWrite(right1MotorPWMSpeedChannel, abs(rightMotorSpeed));     
   }
-  else
-  {
-    digitalWrite(motorR_Pin1,LOW);
-    digitalWrite(motorR_Pin2,LOW);      
+  else{
+    ledcWrite(right2MotorPWMSpeedChannel, 1);
+    ledcWrite(right1MotorPWMSpeedChannel, 1);      
   }
   
-  if (leftMotorSpeed < 0)
-  {
-    digitalWrite(motorL_Pin1,LOW);
-    digitalWrite(motorL_Pin2,HIGH);    
+  if (leftMotorSpeed < 0){
+    ledcWrite(left4MotorPWMSpeedChannel, abs(leftMotorSpeed));    
   }
-  else if (leftMotorSpeed > 0)
-  {
-    digitalWrite(motorL_Pin1,HIGH);
-    digitalWrite(motorL_Pin2,LOW);      
+  else if (leftMotorSpeed > 0){
+    ledcWrite(left3MotorPWMSpeedChannel, abs(leftMotorSpeed));      
   }
-  else
-  {
-    digitalWrite(motorL_Pin1,LOW);
-    digitalWrite(motorL_Pin2,LOW);      
-  } 
-
-  ledcWrite(rightMotorPWMSpeedChannel, abs(rightMotorSpeed));
-  ledcWrite(leftMotorPWMSpeedChannel, abs(leftMotorSpeed));    
+  else{
+    ledcWrite(left4MotorPWMSpeedChannel, 1); 
+    ledcWrite(left3MotorPWMSpeedChannel, 1);      
+  }   
+  
 }
  
 void setup() {
   Serial.begin(115200);
   WiFi.mode(WIFI_STA);
 
-  pinMode(enableR_Pin,OUTPUT);
-  pinMode(motorR_Pin1,OUTPUT);
-  pinMode(motorR_Pin2,OUTPUT);
-  
-  pinMode(enableL_Pin,OUTPUT);
-  pinMode(motorL_Pin1,OUTPUT);
-  pinMode(motorL_Pin2,OUTPUT);
-
   //Set up PWM for motor speed
-  ledcSetup(rightMotorPWMSpeedChannel, freq, resolution);
-  ledcSetup(leftMotorPWMSpeedChannel, freq, resolution);  
-  ledcAttachPin(enableR_Pin, rightMotorPWMSpeedChannel);
-  ledcAttachPin(enableL_Pin, leftMotorPWMSpeedChannel); 
+  ledcSetup(right1MotorPWMSpeedChannel, freq, resolution);
+  ledcSetup(right2MotorPWMSpeedChannel, freq, resolution);  
+  ledcSetup(left3MotorPWMSpeedChannel, freq, resolution);
+  ledcSetup(left4MotorPWMSpeedChannel, freq, resolution);
+
+  ledcAttachPin(RIN1, right1MotorPWMSpeedChannel);
+  ledcAttachPin(RIN2, right2MotorPWMSpeedChannel); 
+  ledcAttachPin(LIN3, left3MotorPWMSpeedChannel);
+  ledcAttachPin(LIN4, left4MotorPWMSpeedChannel); 
   
   rotateMotor(0, 0);
 
