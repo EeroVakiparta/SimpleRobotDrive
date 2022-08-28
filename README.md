@@ -1,7 +1,7 @@
 # SimpleRobotDrive
 
 
-## Description
+## 1 Step
 After first test it seems there is a change that communication is fast enough to try the streeing.
 ```
 11:39:09.416 -> Y: 7
@@ -39,4 +39,50 @@ After first test it seems there is a change that communication is fast enough to
 11:39:09.463 -> Y: 2
 11:39:09.463 -> 
 11:39:09.463 -> Bytes received: 2
+```
+## 2 Step
+
+Joystic working.
+```
+12:36:53.478 -> Y: 150
+12:36:53.478 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 56
+12:36:53.526 -> Y: 150
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 56
+12:36:53.526 -> Y: 150
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 56
+12:36:53.526 -> Y: 150
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 55
+12:36:53.526 -> Y: 149
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 49
+12:36:53.526 -> Y: 147
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 46
+12:36:53.526 -> Y: 144
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 41
+12:36:53.526 -> Y: 140
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 31
+12:36:53.526 -> Y: 150
+12:36:53.526 -> 
+12:36:53.526 -> Bytes received: 2
+12:36:53.526 -> X: 28
+12:36:53.526 -> Y: 141
+12:36:53.526 -> 
+12:36:53.572 -> Bytes received: 2
+12:36:53.572 -> X: 17
+12:36:53.572 -> Y: 149
 ```
