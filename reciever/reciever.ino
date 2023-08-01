@@ -1,5 +1,6 @@
 #include <esp_now.h>
 #include <WiFi.h>
+#include "DifferentialSteering.h"
 
 #define MAX_MOTOR_SPEED 200
 #define SIGNAL_TIMEOUT 1000  //ms
@@ -12,6 +13,9 @@ int RIN2 = 17;
 // Motor L
 int LIN3 = 18;
 int LIN4 = 19;
+
+int fPivYLimit = 32;
+DifferentialSteering DiffSteer;
 
 // Setting PWM properties
 const int freq = 1000;
@@ -62,7 +66,12 @@ void throttleAndSteeringMovements()
   rightMotorSpeed = constrain(rightMotorSpeed, 0, 255);
   leftMotorSpeed = constrain(leftMotorSpeed, 0, 255);
 
-  rotateMotor(rightMotorSpeed * motorDirection, leftMotorSpeed * motorDirection);
+  int XValue = map(payload.x, 0, 254, -127, 127);
+  int YValue = map(payload.y, 0, 254, -127, 127);
+  DiffSteer.computeMotors(YValue, XValue);
+  int leftMotor = DiffSteer.computedLeftMotor();
+  int rightMotor = DiffSteer.computedRightMotor();
+  rotateMotor(rightMotor, leftMotor);
 }
 
 void rotateMotor(int rightMotorSpeed, int leftMotorSpeed){
@@ -96,8 +105,12 @@ void rotateMotor(int rightMotorSpeed, int leftMotorSpeed){
  
 void setup() {
   Serial.begin(115200);
+  Serial.print("\nDefault ESP32 MAC Address: ");
+  Serial.println(WiFi.macAddress());
   WiFi.mode(WIFI_STA);
 
+
+  DiffSteer.begin(fPivYLimit);
   //Set up PWM for motor speed
   ledcSetup(right1MotorPWMSpeedChannel, freq, resolution);
   ledcSetup(right2MotorPWMSpeedChannel, freq, resolution);  

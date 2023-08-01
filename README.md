@@ -110,6 +110,8 @@ There is 2 options:
 
 Both reduce complexity. Bruched esc could power the ESP32 the same way as big L982N driver.
 Conclusion: I will try to use the MINI-L298N driver first.
+Seems like ESP32 runs happy but hot powered directly form LiPo battery. But it is not preferred.
+- [ ] Try to use just bare ESP32 module with 3.3V power step down.
 
 ## 4 Fit everything in a box and budget
 
@@ -119,7 +121,6 @@ Conclusion: I will try to use the MINI-L298N driver first.
 | Dual Channel MINI-L298N DC Motor Driver | 0,26€   | 
 | Lipo | 5€   | 
 | 7.4V 800mA*2 XH-3P BMS 2S USB Charger | 1.22€   | 
-| Dual Channel MINI-L298N DC Motor Driver | 0,26€   | 
 | Joystic Dual axis | 0,65€   | 
 | N20 Motors x 2 | 7€ | 
 | TOTAL FOR NOW: | 24€ | 
